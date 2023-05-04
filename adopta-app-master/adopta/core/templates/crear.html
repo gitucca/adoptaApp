@@ -1,0 +1,32 @@
+{% extends 'social/layout.html' %}
+{#{% load filters %}#}
+{% block title %} Formularios Artículos {% endblock title %}
+{% block content %}
+    {% if form.errors %}
+        <strong class="rojo"> Hay errores en el Formulario {{ form.errors }} </strong>
+    {% endif %}
+
+<form class='form' method='POST' enctype='multipart/form-data'>
+    {% csrf_token %}
+    <label for="title">Nombre mascota: </label>
+    <input type="text" name="title" placeholder="Me llamo..." required>
+
+    <select for="categories" name="categories" class="custom-select mr-sm-2" id="cars">
+        <option selected>Escoge..</option>
+        <option value="1">Perro</option>
+        <option value="2">Gato</option>
+        <option value="3">Otro</option>
+      </select>
+    <br><br>
+    <label for="content">Describe a tu mascota: </label>
+    <input type="text" name="content" placeholder="Escribe aquí sus características" required>
+   
+    <label for="image">Subir foto</label>
+    <input id="image" type="file" name="image" required>
+
+    
+
+    <button type='submit' id='submit'>Publicar mi mascota en Adopta</button>
+</form>
+{% endblock %}
+
